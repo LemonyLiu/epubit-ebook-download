@@ -20,19 +20,25 @@
   },
   "homepage": "https://github.com/alanwei43/epubit-ebook-download#readme",
   "devDependencies": {
+    "@types/cheerio": "^0.22.17",
     "@types/express": "^4.17.2",
     "@types/node": "^10.12.18",
+    "@types/pdfkit": "^0.10.5",
     "ts-node": "^7.0.1",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.2.4"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "express": "^4.17.1"
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "pdfkit": "^0.11.0"
   },
   "config": {
-    "delay": 10,
-    "cookie": "",
-    "projectIds": [ ]
+    "delay": 1,
+    "cookie": "acw_tc=2760825415852817891844740e711dc92433051dfd67175bb15466fec0816b; SESSION=02fceb01-199c-4855-97c2-71676cab5f2b",
+    "projectIds": [
+      "9afea4fd-cbc9-4428-860e-e49258d2b0d3"
+    ]
   }
 }
