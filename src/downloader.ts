@@ -67,7 +67,7 @@ async function saveCategory(category: Category) {
     }
 }
 async function saveToHtml(response: ResponseResult<{ contents: Content[], folder: Category }>): Promise<void> {
-    let fileName = response.data.folder.name.replace(/[\/\?\*&!@#$]/g, "_");
+    let fileName = response.data.folder.name.replace(/[\/\?\*&!@#$:\\<>"'|]/g, "_");
     if (/^第\d+章 /.test(fileName)) {
         fileName = fileName.replace(/^第(\d+)章 (.+)/, "$1 第$1章 $2");
     }
