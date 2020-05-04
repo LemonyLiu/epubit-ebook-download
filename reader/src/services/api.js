@@ -1,4 +1,6 @@
-export const BOOKS_ROOT_DIR = "/books/";
+export const BASE_DIR = `/reader`;
+export const BOOKS_ROOT_DIR = `${BASE_DIR}/books/`;
+
 function getJSON(url) {
     return fetch(url, {
         method: "GET"
@@ -6,7 +8,7 @@ function getJSON(url) {
 }
 
 export function getBooksDir() {
-    const key = `/books/list`;
+    const key = `${BASE_DIR}/books/list`;
     let promise = null
     try {
         const data = JSON.parse(localStorage.getItem(key) || "[]");
@@ -17,9 +19,9 @@ export function getBooksDir() {
         console.warn("getBooksDir: ", ex);
     }
     if (!promise) {
-        promise = getJSON("/api/books");
+        promise = getJSON(`${BASE_DIR}/api/books`);
     }
-    getJSON("/api/books").then(res => {
+    getJSON(`${BASE_DIR}/api/books`).then(res => {
         localStorage.setItem(key, JSON.stringify(res));
     });
     return promise;
@@ -42,7 +44,7 @@ export function iterableTree(tree, callback) {
     }
 }
 export function getBookInfo(id) {
-    const key = `/book/info/${id}`;
+    const key = `${BASE_DIR}/book/info/${id}`;
     try {
         const data = JSON.parse(localStorage.getItem(key) || "{}");
         if (data && data.success) {
@@ -51,7 +53,7 @@ export function getBookInfo(id) {
     } catch (ex) {
         console.warn("getBookInfo: ", ex);
     }
-    const promise = getJSON(`/api/book-info/${id}`);
+    const promise = getJSON(`${BASE_DIR}/api/book-info/${id}`);
     promise.then(res => {
         localStorage.setItem(key, JSON.stringify(res));
     });
@@ -59,7 +61,7 @@ export function getBookInfo(id) {
 }
 export function getRecentBooks(count) {
     count = parseInt(count);
-    if(isNaN(count) || count <= 0){
+    if (isNaN(count) || count <= 0) {
         count = 5;
     }
     return Promise.resolve(getBooksProgress().sort((prev, next) => next.date - prev.date).slice(0, count));
@@ -71,7 +73,7 @@ export function getRecentBooks(count) {
  */
 export function getBooksProgress() {
     try {
-        return JSON.parse(localStorage.getItem("/books/progress") || "[]");
+        return JSON.parse(localStorage.getItem(`${BASE_DIR}/books/progress`) || "[]");
     } catch (ex) {
         console.warn("getBooksProgress: ", ex);
         return [];
@@ -83,5 +85,5 @@ export function getBooksProgress() {
  * @returns {void}
  */
 export function updateBooksProgress(progressData) {
-    localStorage.setItem("/books/progress", JSON.stringify(progressData));
+    localStorage.setItem(`${BASE_DIR}/books/progress`, JSON.stringify(progressData));
 }

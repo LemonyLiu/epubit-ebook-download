@@ -3,15 +3,18 @@ import fs from "fs";
 import path from "path";
 import axios from "axios";
 
+const BASE_URL = `/reader`;
+
 const app = express();
 const PORT: Number = 8002;
 
-app.use("/books", express.static("./books/"));
-app.use("/reader", express.static("./reader/dist/"));
-app.get("/reader/book/:id", (req, res) => {
+
+app.use(BASE_URL, express.static("./reader/dist/"));
+app.use(`${BASE_URL}/books`, express.static("./books/"));
+app.get(`${BASE_URL}/book/:id`, (req, res) => {
     res.sendFile(path.join(process.cwd(), "/reader/dist/index.html"));
 });
-app.get("/api/books", (req, res) => {
+app.get(`${BASE_URL}/api/books`, (req, res) => {
     const books = fs
         .readdirSync("./books", {
             encoding: "utf8"
@@ -31,7 +34,7 @@ app.get("/api/books", (req, res) => {
     res.json(books);
 });
 
-app.get("/api/book-info/:id", (req, res) => {
+app.get(`${BASE_URL}/api/book-info/:id`, (req, res) => {
     const filePath = path.join("books", req.params.id, "book-info.json");
     if (fs.existsSync(filePath)) {
         res.json(JSON.parse(fs.readFileSync(filePath).toString()));
@@ -48,5 +51,5 @@ app.get("/api/book-info/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`访问 http://localhost:${PORT}/reader 阅读电子书`);
+    console.log(`访问 http://localhost:${PORT}${BASE_URL} 阅读电子书`);
 });
