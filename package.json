@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "download": "tsc && node dist/src/downloader.js",
     "reader": "tsc && node dist/src/reader.js"
   },
@@ -33,6 +34,6 @@
   "config": {
     "delay": 10,
     "cookie": "",
-    "projectIds": [ ]
+    "projectIds": []
   }
 }

@@ -1,18 +1,19 @@
 <template>
-  <div class="container-fluid">
+  <div>
+    <bread-crumb />
     <div class="functions">
       <ul>
         <li>
-          <router-link to="/" class="btn btn-xs btn-primary" @click="toggleToC">首页</router-link>
+          <router-link to="/" class="btn btn-sm btn-info" @click="toggleToC">首页</router-link>
         </li>
         <li>
-          <button class="btn btn-xs btn-primary" @click="toggleToC">目录</button>
+          <button class="btn btn-sm btn-info" @click="toggleToC">目录</button>
         </li>
         <li>
-          <button class="btn btn-xs btn-primary" @click="prevChapter">上一节</button>
+          <button class="btn btn-sm btn-info" @click="prevChapter">上一节</button>
         </li>
         <li>
-          <button class="btn btn-xs btn-primary" @click="nextChapter">下一节</button>
+          <button class="btn btn-sm btn-primary" @click="nextChapter">下一节</button>
         </li>
       </ul>
     </div>
@@ -43,10 +44,12 @@ import {
   getBookCategoryTree,
   iterableTree,
   getBooksProgress,
-  updateBooksProgress
+  updateBooksProgress,
+  getBookInfo
 } from "../services/api";
 import TableContents from "../components/TableContents";
 import ChapterContent from "../components/ChapterContent";
+import BreadCrumb from "../components/BreadCrumb";
 import { SharedInfo } from "../services/store";
 
 export default {
@@ -67,9 +70,16 @@ export default {
   },
   mounted() {
     this.loadCategoryTree();
-    console.log("read book: ", this.bookId);
+    this.loadBookInfo();
   },
   methods: {
+    loadBookInfo() {
+      getBookInfo(this.bookId).then(response => {
+        if (response.data) {
+          this.shared.book = response.data;
+        }
+      });
+    },
     loadCategoryTree() {
       getBookCategoryTree(this.bookId).then(response => {
         this.data.flattedCategory = [];
@@ -112,7 +122,9 @@ export default {
       this.saveReadProgress(this.shared.category.selected);
     },
     initReadProgress() {
-      const localData = getBooksProgress().filter(item => item.bookId === this.bookId)[0];
+      const localData = getBooksProgress().filter(
+        item => item.bookId === this.bookId
+      )[0];
 
       if (!localData || !localData.chapterId) {
         this.shared.category.selected = this.data.categoryRootTree.children[0];
@@ -129,7 +141,7 @@ export default {
         bookId: this.bookId,
         chapterId: chapter.id,
         chapterName: chapter.name,
-        date: Date.now(),
+        date: Date.now()
       };
       const progress = getBooksProgress();
       let hasFound = false;
@@ -149,7 +161,8 @@ export default {
   },
   components: {
     "table-contents": TableContents,
-    "chapter-content": ChapterContent
+    "chapter-content": ChapterContent,
+    "bread-crumb": BreadCrumb
   }
 };
 </script>

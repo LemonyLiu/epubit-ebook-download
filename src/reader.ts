@@ -6,8 +6,7 @@ import axios from "axios";
 const BASE_URL = `/reader`;
 
 const app = express();
-const PORT: Number = 8002;
-
+const PORT: Number = 3010;
 
 app.use(BASE_URL, express.static("./reader/dist/"));
 app.use(`${BASE_URL}/books`, express.static("./books/"));

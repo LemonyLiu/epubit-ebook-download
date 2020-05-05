@@ -31,20 +31,25 @@ ul > li {
 .books-list ol{
   margin-left: 2em;
 }
-  .functions{
-    position: fixed;
-    z-index: 3;
-    right: 10px;
-    bottom: 10px;
-  }
-  .functions ul {
-    margin: 0;
-    list-style: none;
-    opacity: .8;
-  }
-  .functions ul li {
-    margin: 10px 0;
-  }
+.functions{
+  position: fixed;
+  z-index: 3;
+  left: 10px;
+  bottom: 10px;
+}
+.functions ul {
+  margin: 0;
+  list-style: none;
+  opacity: .8;
+}
+.functions ul li {
+  margin: 10px 5px;
+  float: left;
+}
+
+.breadcrumb{
+  margin-bottom: 5px;
+}
   .table-of-contencts{
     position: fixed;
     z-index: 2;
@@ -54,7 +59,7 @@ ul > li {
     width: 30%;
     min-width: 300px;
     border-radius: 5px;
-    margin-top: 1em;
+    margin-top: -20px;
     box-shadow: #eee 5px 5px 5px;
   }
   .chapter-content{
@@ -63,4 +68,7 @@ ul > li {
   .chapter-content code {
     white-space: pre;
     overflow: scroll;
+  }
+  table{
+    margin: 0 auto;
   }
