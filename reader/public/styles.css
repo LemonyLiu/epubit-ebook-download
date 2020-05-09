@@ -1,12 +1,15 @@
-*{
-  margin: 0;
-  padding: 0;
+* {
+    margin: 0;
+    padding: 0;
 }
+
 ul {
-  margin-left: 1em;
+    margin-left: 1em;
 }
-ul > li {
-  margin-left: 1em;;
+
+ul>li {
+    margin-left: 1em;
+    ;
 }
 
 #app {
@@ -14,43 +17,57 @@ ul > li {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-  .book-category {
+
+.book-category {
     cursor: pointer;
-  }
-  .overscroll {
+}
+
+.overscroll {
     overflow: scroll;
-  }
-  img.center {
+}
+
+img.center {
     max-width: 90%;
     display: inline-block;
     margin: 10px auto;
-  }
-  ul li.selected >div {
-    color: yellow;
-  }
-.books-list ol{
-  margin-left: 2em;
-}
-.functions{
-  position: fixed;
-  z-index: 3;
-  left: 10px;
-  bottom: 10px;
-}
-.functions ul {
-  margin: 0;
-  list-style: none;
-  opacity: .8;
-}
-.functions ul li {
-  margin: 10px 5px;
-  float: left;
 }
 
-.breadcrumb{
-  margin-bottom: 5px;
+ul li.selected>div {
+    color: yellow;
 }
-  .table-of-contencts{
+
+.books-list ol {
+    margin-left: 2em;
+}
+
+.functions {
+    position: fixed;
+    z-index: 3;
+    left: 10px;
+    bottom: 10px;
+}
+
+.functions ul {
+    margin: 0;
+    list-style: none;
+    opacity: .8;
+}
+
+.functions ul li {
+    margin: 10px 5px;
+    float: left;
+}
+
+ol.breadcrumb {
+    width: 100%;
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .8em;
+}
+
+.table-of-contencts {
     position: fixed;
     z-index: 2;
     background-color: rgba(0, 150, 255, .9);
@@ -61,14 +78,17 @@ ul > li {
     border-radius: 5px;
     margin-top: -20px;
     box-shadow: #eee 5px 5px 5px;
-  }
-  .chapter-content{
+}
+
+.chapter-content {
     overflow: hidden;
-  }
-  .chapter-content code {
+}
+
+.chapter-content code {
     white-space: pre;
     overflow: scroll;
-  }
-  table{
+}
+
+table {
     margin: 0 auto;
-  }
+}
