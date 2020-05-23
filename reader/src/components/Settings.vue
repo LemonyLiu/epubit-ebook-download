@@ -173,4 +173,7 @@ export default {
   display: inline-block;
   width: 80px;
 }
+.setting-item input[type="text"] {
+  width: 150px;
+}
 </style>
