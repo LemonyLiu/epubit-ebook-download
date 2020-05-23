@@ -14,7 +14,7 @@
     <div class="setting-item">
       <label>
         <span>页面宽度:</span>
-        <input type="text" placeholder="支持百分比和绝对值" v-model="settings.pageWidth" />
+        <input class="form-control input-sm" type="text" placeholder="支持百分比和绝对值" v-model="settings.pageWidth" />
       </label>
     </div>
     <div class="setting-item">
@@ -34,19 +34,19 @@
     <div class="setting-item">
       <label>
         <span>行高:</span>
-        <input type="text" placeholder="比如 30px" v-model="settings.lineHeight" />
+        <input class="form-control input-sm" type="text" placeholder="比如 30px" v-model="settings.lineHeight" />
       </label>
     </div>
     <div class="setting-item">
       <label>
         <span>字符间距:</span>
-        <input type="text" placeholder="比如 3px" v-model="settings.letterSpacing" />
+        <input class="form-control input-sm" type="text" placeholder="比如 3px" v-model="settings.letterSpacing" />
       </label>
     </div>
     <div class="setting-item">
       <label>
         <span>边距:</span>
-        <input type="text" placeholder="比如 20px" v-model="settings.padding" />
+        <input class="form-control input-sm" type="text" placeholder="比如 20px" v-model="settings.padding" />
       </label>
     </div>
   </div>
@@ -173,7 +173,8 @@ export default {
   display: inline-block;
   width: 80px;
 }
-.setting-item input[type="text"] {
+.setting-item .form-control {
+  display: inline-block;
   width: 150px;
 }
 </style>
