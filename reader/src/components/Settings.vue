@@ -110,9 +110,8 @@ export default {
         //设置字符间距
         content.style.letterSpacing = currentSetting.letterSpacing || "normal";
         //设置padding
-        content.style.padding =
-          (currentSetting.padding && "0 " + currentSetting.padding) ||
-          "0 10px";
+        content.style.paddingLeft = currentSetting.padding || "5px";
+        content.style.paddingRight = currentSetting.padding || "5px";
       });
     },
     updateSettings() {
