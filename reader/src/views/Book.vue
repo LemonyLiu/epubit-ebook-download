@@ -1,10 +1,14 @@
 <template>
   <div>
     <bread-crumb />
+    <settings v-show="status.showSettings" :book-id="bookId" />
     <div class="functions">
       <ul>
         <li>
           <router-link to="/" class="btn btn-sm btn-info" @click="toggleToC">首页</router-link>
+        </li>
+        <li>
+          <button class="btn btn-sm btn-info" @click="status.showSettings = !status.showSettings">设置</button>
         </li>
         <li>
           <button class="btn btn-sm btn-info" @click="toggleToC">目录</button>
@@ -30,7 +34,7 @@
         />
       </ul>
     </div>
-    <div class="col-sm-12 chapter-content" @click="toggleToC(false)">
+    <div class="chapter-content" @click="toggleToC(false)">
       <chapter-content
         v-if="shared.category.selected"
         :book-id="bookId"
@@ -50,6 +54,7 @@ import {
 import TableContents from "../components/TableContents";
 import ChapterContent from "../components/ChapterContent";
 import BreadCrumb from "../components/BreadCrumb";
+import Settings from "../components/Settings";
 import { SharedInfo } from "../services/store";
 
 export default {
@@ -64,6 +69,9 @@ export default {
       },
       styles: {
         winHeight: window.innerHeight
+      },
+      status: {
+        showSettings: false
       },
       shared: SharedInfo
     };
@@ -110,6 +118,7 @@ export default {
         return;
       }
       this.shared.category.selected = this.data.flattedCategory[index - 1];
+      this.shared.category.showToC = false;
       this.saveReadProgress(this.shared.category.selected);
     },
     nextChapter() {
@@ -119,6 +128,7 @@ export default {
         return;
       }
       this.shared.category.selected = this.data.flattedCategory[index + 1];
+      this.shared.category.showToC = false;
       this.saveReadProgress(this.shared.category.selected);
     },
     initReadProgress() {
@@ -162,7 +172,8 @@ export default {
   components: {
     "table-contents": TableContents,
     "chapter-content": ChapterContent,
-    "bread-crumb": BreadCrumb
+    "bread-crumb": BreadCrumb,
+    settings: Settings
   }
 };
 </script>

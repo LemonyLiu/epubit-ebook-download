@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 export const BASE_DIR = `/reader`;
 export const BOOKS_ROOT_DIR = `${BASE_DIR}/books/`;
 
@@ -86,4 +87,25 @@ export function getBooksProgress() {
  */
 export function updateBooksProgress(progressData) {
     localStorage.setItem(`${BASE_DIR}/books/progress`, JSON.stringify(progressData));
+}
+
+export function getOrSetSettings(newSettings) {
+    const key = `${BASE_DIR}/settings`;
+    if (arguments.length === 1) {
+        const value = JSON.stringify(newSettings);
+        console.log("update settings: ", value);
+        localStorage.setItem(key, value);
+    } else {
+        try {
+            return JSON.parse(localStorage.getItem(key)) || {};
+        } catch (err) {
+            console.log("getOrSetSettings: ", err);
+            return {
+                all: {
+                    pageWidth: null
+                }
+            };
+        }
+    }
+
 }

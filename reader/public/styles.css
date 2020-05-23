@@ -9,7 +9,6 @@ ul {
 
 ul>li {
     margin-left: 1em;
-    ;
 }
 
 #app {
@@ -24,12 +23,6 @@ ul>li {
 
 .overscroll {
     overflow: scroll;
-}
-
-img.center {
-    max-width: 90%;
-    display: inline-block;
-    margin: 10px auto;
 }
 
 ul li.selected>div {
@@ -76,12 +69,22 @@ ol.breadcrumb {
     width: 30%;
     min-width: 300px;
     border-radius: 5px;
-    margin-top: -20px;
     box-shadow: #eee 5px 5px 5px;
 }
 
 .chapter-content {
     overflow: hidden;
+    padding: 5px;
+}
+.chapter-content.center{
+    margin: 0 auto;
+}
+.chapter-content.left{
+
+ }
+.chapter-content.right{ 
+    position: absolute;
+    right: 0;
 }
 
 .chapter-content code {
@@ -91,4 +94,11 @@ ol.breadcrumb {
 
 table {
     margin: 0 auto;
+}
+
+/* 图片相关样式 */
+img.center {
+    max-width: 90%;
+    display: block;
+    margin: 10px auto;
 }
