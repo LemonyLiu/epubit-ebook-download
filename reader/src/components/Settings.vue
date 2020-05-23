@@ -31,6 +31,24 @@
         </label>
       </label>
     </div>
+    <div class="setting-item">
+      <label>
+        <span>行高:</span>
+        <input type="text" placeholder="比如 30px" v-model="settings.lineHeight" />
+      </label>
+    </div>
+    <div class="setting-item">
+      <label>
+        <span>字符间距:</span>
+        <input type="text" placeholder="比如 3px" v-model="settings.letterSpacing" />
+      </label>
+    </div>
+    <div class="setting-item">
+      <label>
+        <span>边距:</span>
+        <input type="text" placeholder="比如 20px" v-model="settings.padding" />
+      </label>
+    </div>
   </div>
 </template>
 <script>
@@ -51,7 +69,10 @@ export default {
       },
       settings: {
         pageWidth: "100%",
-        align: "center"
+        align: "center",
+        lineHeight: "",
+        letterSpacing: "3px",
+        padding: "0"
       }
     };
   },
@@ -75,12 +96,23 @@ export default {
         console.log("update styles: ", currentSetting);
 
         const content = document.querySelector(".chapter-content");
+        //设置页面宽度
         content.style.width = currentSetting.pageWidth || "auto";
 
+        //设置页面对齐
         content.classList.remove("left");
         content.classList.remove("center");
         content.classList.remove("right");
         content.classList.add(currentSetting.align || "center");
+
+        // 设置行高
+        content.style.lineHeight = currentSetting.lineHeight || "normal";
+        //设置字符间距
+        content.style.letterSpacing = currentSetting.letterSpacing || "normal";
+        //设置padding
+        content.style.padding =
+          (currentSetting.padding && "0 " + currentSetting.padding) ||
+          "0 10px";
       });
     },
     updateSettings() {
