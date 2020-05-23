@@ -43,7 +43,6 @@ ul li.selected>div {
 .functions ul {
     margin: 0;
     list-style: none;
-    opacity: .8;
 }
 
 .functions ul li {
@@ -75,6 +74,7 @@ ol.breadcrumb {
 .chapter-content {
     overflow: hidden;
     padding: 5px;
+    padding-bottom: 60px;
 }
 .chapter-content.center{
     margin: 0 auto;
